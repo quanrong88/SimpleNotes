@@ -3,6 +3,7 @@ Simple notes app is an IOS Notes clones app using UIKit, Combine and MVVM-C desi
 
 #### Features
 - Pin note
+- Delete note
 - Create/Edit note
 - Search note
 - Leadin/trailing table-view-cell swipe actions
