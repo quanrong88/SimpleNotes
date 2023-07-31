@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "sheeeeeeeeet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielsaidi/Sheeeeeeeeet.git",
+      "state" : {
+        "revision" : "bee607ea02a2e2e23d3af745624a1873e9a1aad8",
+        "version" : "3.2.3"
+      }
+    }
+  ],
+  "version" : 2
+}

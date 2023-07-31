@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="NoteCell" customModule="SimpleNotes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzx-PV-qrh">
+                        <rect key="frame" x="20" y="0.0" width="300" height="31.666666666666668"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJP-sT-5CS">
+                        <rect key="frame" x="20" y="31.666666666666671" width="300" height="24.333333333333329"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvM-f8-3W7">
+                        <rect key="frame" x="20" y="56" width="300" height="9"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="bzx-PV-qrh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Ccs-iQ-0Xx"/>
+                    <constraint firstItem="jJP-sT-5CS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OvN-j6-ipE"/>
+                    <constraint firstItem="bzx-PV-qrh" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.45" id="P9B-ks-VoU"/>
+                    <constraint firstItem="FvM-f8-3W7" firstAttribute="top" secondItem="jJP-sT-5CS" secondAttribute="bottom" id="Pt3-ek-1uJ"/>
+                    <constraint firstItem="jJP-sT-5CS" firstAttribute="top" secondItem="bzx-PV-qrh" secondAttribute="bottom" id="SVd-rc-ZpX"/>
+                    <constraint firstItem="bzx-PV-qrh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VSE-7F-ztf"/>
+                    <constraint firstItem="FvM-f8-3W7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Wr3-J8-Qsb"/>
+                    <constraint firstAttribute="trailing" secondItem="FvM-f8-3W7" secondAttribute="trailing" id="ZSW-0Z-3gF"/>
+                    <constraint firstItem="jJP-sT-5CS" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.35" id="cap-sF-cPV"/>
+                    <constraint firstAttribute="trailing" secondItem="bzx-PV-qrh" secondAttribute="trailing" id="eoE-wo-8p3"/>
+                    <constraint firstAttribute="bottom" secondItem="FvM-f8-3W7" secondAttribute="bottom" constant="5" id="xl5-TL-sQd"/>
+                    <constraint firstAttribute="trailing" secondItem="jJP-sT-5CS" secondAttribute="trailing" id="ztb-oN-ZhZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="noteBodyLabel" destination="jJP-sT-5CS" id="sQw-6D-OSv"/>
+                <outlet property="noteDateLabel" destination="FvM-f8-3W7" id="r0J-ro-Sln"/>
+                <outlet property="noteTitleLabel" destination="bzx-PV-qrh" id="dXT-vY-jZw"/>
+            </connections>
+            <point key="canvasLocation" x="77.862595419847324" y="9.5070422535211279"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
