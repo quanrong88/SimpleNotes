@@ -96,8 +96,6 @@ final class AppCoordinator {
                     if self.isPhone {
                         self.navigationController.popViewController(animated: true)
                     } else {
-                        self.createNoteVC = nil
-                        self.appState = .home
                         self.detailNavigationController?.setViewControllers([], animated: false)
                     }
                     
