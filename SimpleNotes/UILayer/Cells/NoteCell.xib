@@ -31,8 +31,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvM-f8-3W7">
-                        <rect key="frame" x="20" y="56" width="300" height="9"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <rect key="frame" x="20" y="56" width="300" height="11"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                         <color key="textColor" systemColor="systemGrayColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -49,7 +49,7 @@
                     <constraint firstAttribute="trailing" secondItem="FvM-f8-3W7" secondAttribute="trailing" id="ZSW-0Z-3gF"/>
                     <constraint firstItem="jJP-sT-5CS" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.35" id="cap-sF-cPV"/>
                     <constraint firstAttribute="trailing" secondItem="bzx-PV-qrh" secondAttribute="trailing" id="eoE-wo-8p3"/>
-                    <constraint firstAttribute="bottom" secondItem="FvM-f8-3W7" secondAttribute="bottom" constant="5" id="xl5-TL-sQd"/>
+                    <constraint firstAttribute="bottom" secondItem="FvM-f8-3W7" secondAttribute="bottom" constant="3" id="xl5-TL-sQd"/>
                     <constraint firstAttribute="trailing" secondItem="jJP-sT-5CS" secondAttribute="trailing" id="ztb-oN-ZhZ"/>
                 </constraints>
             </tableViewCellContentView>
@@ -60,7 +60,7 @@
                 <outlet property="noteDateLabel" destination="FvM-f8-3W7" id="r0J-ro-Sln"/>
                 <outlet property="noteTitleLabel" destination="bzx-PV-qrh" id="dXT-vY-jZw"/>
             </connections>
-            <point key="canvasLocation" x="77.862595419847324" y="9.5070422535211279"/>
+            <point key="canvasLocation" x="77.862595419847324" y="9.1549295774647899"/>
         </tableViewCell>
     </objects>
     <resources>

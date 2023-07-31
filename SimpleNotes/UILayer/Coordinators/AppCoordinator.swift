@@ -18,6 +18,9 @@ enum AppState: Codable {
 final class AppCoordinator {
     public var window: UIWindow
     let navigationController: UINavigationController
+    let detailNavigationController: UINavigationController?
+    let splitViewController: UISplitViewController?
+    
     let repository: NotesRepository
     
     var subscriptions = Set<AnyCancellable>()
@@ -26,15 +29,27 @@ final class AppCoordinator {
     var createNoteVC: CreateNoteVC?
     var appState: AppState
     
+    let isPhone: Bool
+    
     public init(window: UIWindow) {
         self.window = window
         self.repository = NotesRepository()
         self.appState = UserDefaults.standard.load(key: "app-state", obj: AppState.self) ?? .home
-
+        isPhone = UIDevice.current.userInterfaceIdiom == .phone
         let homeVM = HomeViewModel(repository: repository)
         homeVC = HomeVC(viewModel: homeVM)
         
         self.navigationController = UINavigationController(rootViewController: homeVC)
+        
+        if isPhone {
+            detailNavigationController = nil
+            splitViewController = nil
+        } else {
+            splitViewController = UISplitViewController()
+            splitViewController?.preferredDisplayMode = .oneBesideSecondary
+            detailNavigationController = UINavigationController()
+            splitViewController?.viewControllers = [navigationController, detailNavigationController!]
+        }
         
         homeVM.events
             .sink { event in
@@ -49,6 +64,7 @@ final class AppCoordinator {
                 }
             }
             .store(in: &subscriptions)
+        
         if case .editing(let note, _, _) = appState {
             openCreateNoteView(note)
             UserDefaults.standard.removeObject(forKey: "app-state")
@@ -56,7 +72,7 @@ final class AppCoordinator {
     }
     
     public func start() {
-        window.rootViewController = navigationController
+        window.rootViewController = isPhone ? navigationController : splitViewController!
     }
     
     public func finish() {
@@ -70,15 +86,21 @@ final class AppCoordinator {
             createNoteVM.savedAppState = appState
             animated = false
         }
-        createNoteVC = CreateNoteVC(viewModel: createNoteVM)
-        self.navigationController.pushViewController(createNoteVC!, animated: animated)
+        let viewcontroller = CreateNoteVC(viewModel: createNoteVM)
         
         createNoteVM.events
             .sink { event in
                 switch event {
                 case .done:
-                    self.navigationController.popViewController(animated: true)
                     self.homeVC.viewModel.actions.send(.reloadData)
+                    if self.isPhone {
+                        self.navigationController.popViewController(animated: true)
+                    } else {
+                        self.createNoteVC = nil
+                        self.appState = .home
+                        self.detailNavigationController?.setViewControllers([], animated: false)
+                    }
+                    
                 case .stateChange(note: let note, title: let title, body: let body):
                     self.appState = .editing(note: note, title: title, body: body)
                 case .back:
@@ -88,6 +110,13 @@ final class AppCoordinator {
                 }
             }
             .store(in: &subscriptions)
+        
+        if isPhone {
+            self.navigationController.pushViewController(viewcontroller, animated: animated)
+        } else {
+            detailNavigationController?.viewControllers = [viewcontroller]
+        }
+        createNoteVC = viewcontroller
     }
     
     private func openOptionSelectView() {
